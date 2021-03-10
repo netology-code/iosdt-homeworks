@@ -1,22 +1,21 @@
-**URLSession** 
+# Домашнее задание к занятию 1.1 	URLSession. URLSessionDataTask
 
-**URLSessionDataTask**
+## Правила выполнения домашней работы:
+* За основу домашнего задания мы берем итоговую версию VK-проекта `Navigation` в рабочей ветке на Github. 
+От локальной версии удаленной базовой ветки создайте новую ветку для ДЗ: `git checkout -b <название новой ветки>`. После окончания работы над ДЗ необходимо запушить ветку в origin.
 
-За основу домашнего задания возьмем итоговую версию VK-проекта `Navigation` в рабочей ветке на Github. 
-От локальной версии удаленной базовой ветки создадим новую ветку для ДЗ: `git checkout -b <название новой ветки>` и после окончания работы над ДЗ запушим ветку в origin 
-
-- Создайте сетевой сервис, типа `struct NetworkManager` или `struct NetworkService`
-- В `NetworkService` пока будет только 1 метод - он будет запускать `URLSessionDataTask` для определенного URL
-- Дополнительно создайте `enum AppConfiguration`, в нем будут 3 case с ассоциированными значениями типа URL или String, на ваше усмотрение
-- При загрузке приложения в `AppDelegate` рандомно инициализируйте свойство `appConfiguration: AppConfiguration` в методе `didFinish...`
-- Для инициализации кейсов `appConfiguration` используйте любые 3 URL из открытого API: `https://swapi.dev/api/` 
+- Создайте сетевой сервис, типа `struct NetworkManager` или `struct NetworkService`.
+- В `NetworkService` пока будет только 1 метод, он будет запускать `URLSessionDataTask` для определенного URL.
+- Дополнительно создайте `enum AppConfiguration`, в нем будут 3 case с ассоциированными значениями типа URL или String, на ваше усмотрение.
+- При загрузке приложения в `AppDelegate` рандомно инициализируйте свойство `appConfiguration: AppConfiguration` в методе `didFinish...`.
+- Для инициализации кейсов `appConfiguration` используйте любые 3 URL из открытого API: `https://swapi.dev/api/`.
 Примеры String для URL: 
 * "https://swapi.dev/api/people/8"
 * "https://swapi.dev/api/starships/3"
 * "https://swapi.dev/api/planets/5"
 
-- после инициализации свойства `appConfiguration` его значение передается в (лучше `static func...`) метод сетевого сервиса (см пункт первый)
-- метод вынимает из appConfiguration ассоциированное значение String или сразу URL и отправляет запрос (типа `URLSessionDataTask`) к API
+- после инициализации свойства `appConfiguration` его значение передается в (лучше `static func...`) метод сетевого сервиса (см. пункт первый).
+- метод вынимает из appConfiguration ассоциированное значение String или сразу URL и отправляет запрос (типа `URLSessionDataTask`) к API.
 
 С помощью команды `print` выведите результат:
 
