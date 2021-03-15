@@ -10,7 +10,7 @@
 
 ## Задание 1:
 
-[URL 1](https://jsonplaceholder.typicode.com/todos/{любой номер на ваше усмотрение})
+[URL 1](https://jsonplaceholder.typicode.com/todos/ {любой номер на ваше усмотрение})
 
 - Создайте модель данных на базе JSON
 - Запустите `URLSessionDataTask` 
@@ -27,7 +27,7 @@
 - В дополнительно созданной `UILabel` на `InfoViewController` отобразите период обращения планеты Татуин вокруг своей звезды (orbital_period)
 - Подсказка: в этой задаче пригодится `enum CodingKeys` 
 
-## Задание 3 с большой звездочкой:
+## Задание 3* (с большой звездочкой):
 
 [URL тот же](https://swapi.dev/api/planets/1)
 
