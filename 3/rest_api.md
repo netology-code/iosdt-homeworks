@@ -14,9 +14,9 @@
 
 ## Задача: 
 
-1. свой проект Firebase создать  [Firebase](https://firebase.google.com/docs/ios/setup?authuser=0)
+1. свой проект Firebase создать  [Firebase](https://firebase.google.com/docs/ios/setup)
 2. Bundle.id -> прописать в консоли Firebase 
-3. Firebase .plist -> скачать из консоли и добавить в файлы приложения 
+3. По инструкции .plist -> скачать из консоли Firebase и добавить в файлы приложения, сконфигурируйте `FirebaseApp` в `AppDelegate` 
 4. установить Firebase/Core, Firebase/Auth через [CocoaPods](https://cocoapods.org)
 5. подключить Firebase/Auth к LoginViewController 
 https://firebase.google.com/docs/auth/ios/start?authuser=0
