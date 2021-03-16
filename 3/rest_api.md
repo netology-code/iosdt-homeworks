@@ -24,14 +24,20 @@ https://firebase.google.com/docs/auth/ios/start?authuser=0
 ### Сценарии "Регистрация" и "Вход" 
 
 1. Перед тем, как писать код, проработать сценарии: 
+
    a) юзер вводит email / пароль, которых еще в БД нет - зарегистрировать нового юзера
+   
    b) юзер пытается войти без регистрации, с пустыми полями ввода (может быть кнопке `Login` сделать ***disable?***) - напомнить о том, что надо ввести email и пароль
+   
    c) юзер нажимает кнопку "Login" с частично/неверно заполненными полями ввода - выдать ошибку или зарегистрировать нового юзера
+   
    d) юзер вводит email / пароль, которые уже существуют в базе - успешный логин
+   
 2. Сопоставьте сценарии с методами Firebase API: надо ли расписывать все сценарии или просто обработать ошибку в методе 
+
 3. раньше у нас был синглтон Checker, теперь вариантов 2: 
-LoginInspector передается в роли ViewModel (или как extension от ViewModel) к LoginViewController. Тогда взаимодействие у него будет с LoginViewController через замыкания.
-LoginInspector взаимодействует с LoginViewController через протокол делегата LoginViewControllerDelegate. 
+- LoginInspector передается в роли ViewModel (или как extension от ViewModel) к LoginViewController. Тогда взаимодействие у него будет с LoginViewController через замыкания.
+- LoginInspector взаимодействует с LoginViewController через протокол делегата LoginViewControllerDelegate. 
 В любом случае, в своем(их) методе(ах) проверки логина и пароля LoginInspector будет вызывать методы Firebase/Auth
 
 ### Что пригодится: 
