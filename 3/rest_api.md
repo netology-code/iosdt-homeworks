@@ -37,6 +37,9 @@ LoginInspector взаимодействует с LoginViewController через 
 ### Что пригодится: 
 
 `FirebaseAuth.Auth.auth().currentUser` - проверка на `nil`
+
 `FirebaseAuth.Auth.auth().createUser(withEmail:, password:, completion:)`
+
 `FirebaseAuth.Auth.auth().signIn(withEmail:, password:, completion:)`
+
 `FirebaseAuth.Auth.auth().signOut() throws`
