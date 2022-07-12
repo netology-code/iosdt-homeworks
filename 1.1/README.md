@@ -9,20 +9,19 @@
 
 ## Задание:
 
-1. Создайте сетевой сервис, типа `struct NetworkManager` или `struct NetworkService`. В `NetworkService` пока будет только 1 метод, он будет запускать `URLSessionDataTask` для определенного URL.
-2. Дополнительно создайте `enum AppConfiguration`, в нем будут 3 case с ассоциированными значениями типа URL или String, на ваше усмотрение.
-3.  При загрузке приложения в `AppDelegate` рандомно инициализируйте свойство `appConfiguration: AppConfiguration` в методе `didFinish...`.
-4.  Для инициализации кейсов `appConfiguration` используйте любые 3 URL из открытого API: `https://swapi.dev/api/`. 
+1. Создайте сетевой сервис, типа `struct NetworkManager` или `struct NetworkService`. В `NetworkService` пока будет только 1 пустой метод `static func request() {}`. Позже он будет запускать `URLSessionDataTask` для определенного URL.
+2. Объявите `enum AppConfiguration`, в нем будут 3 case с ассоциированными значениями типа `URL` или `String`, на ваше усмотрение.
+3.  При загрузке приложения в `AppDelegate/SceneDelegate` (там, где загружено окно типа `UIWindow` и рутовый контроллер) рандомно инициализируйте свойство `appConfiguration: AppConfiguration` в методе `didFinish.../willConnectTo`.
+4.  Для инициализации кейсов `appConfiguration` используйте любые 3 `URL` из открытого API: `https://swapi.dev/api/`. 
 
 Примеры String для URL: 
 * "https://swapi.dev/api/people/8"
 * "https://swapi.dev/api/starships/3"
 * "https://swapi.dev/api/planets/5"
 
-- после инициализации свойства `appConfiguration` его значение передается в (лучше `static func...`) метод сетевого сервиса (см. пункт первый).
-- метод вынимает из appConfiguration ассоциированное значение String или сразу URL и отправляет запрос (типа `URLSessionDataTask`) к API.
-
-5. С помощью команды `print` выведите результат:
+5. Передайте конфигурацию в метод сетевого сервиса. Поскольку метод `request` сервиса `NetworkManager/NetworkService` не принимал параметров, его надо изменить, добавив как параметр конфигурацию `static func request(for configuration: AppConfiguration) {}`.
+6. Реализуйте сессию в методе `request` с помощью переданной конфигурации. Для этого сначала нужно достать ассоциированное значение (типа `String` или сразу `URL`) из параметра конфигурации `configuration` с помощью оператора `switch`, преобразовать строку в `URL` при необходимости, а далее отправить запрос с помощью `URLSessionDataTask` к API.
+7. С помощью команды `print` выведите результат:
 
 A. data - в доступном для понимания виде, то есть `String` в стандартной кодировке
 
