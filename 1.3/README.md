@@ -14,31 +14,30 @@
 
 ## Задача: 
 
-1. свой проект Firebase создать  [Firebase](https://firebase.google.com/docs/ios/setup)
-2. Bundle.id -> прописать в консоли Firebase 
-3. По инструкции .plist -> скачать из консоли Firebase и добавить в файлы приложения, сконфигурируйте `FirebaseApp` в `AppDelegate` 
-4. установить Firebase/Core, Firebase/Auth через [CocoaPods](https://cocoapods.org)
-5. подключить Firebase/Auth к LoginViewController 
+1. Создать свой проект в [Firebase](https://firebase.google.com/docs/ios/setup).
+2. Зарегистрировать приложение в Firebase, введя Bundle Identifier.
+3. По инструкции .plist -> скачать из консоли Firebase и добавить в файлы приложения, сконфигурируйте `FirebaseApp` в `AppDelegate`.
+4. Установить Firebase/Core, Firebase/Auth через [CocoaPods](https://cocoapods.org).
+5. Подключить Firebase/Auth к LoginViewController.
 https://firebase.google.com/docs/auth/ios/start?authuser=0
 
 ### Сценарии "Регистрация" и "Вход" 
 
 1. Перед тем, как писать код, проработать сценарии: 
 
-   a) юзер вводит email / пароль, которых еще в БД нет - зарегистрировать нового юзера
+   a) юзер вводит корректные email / пароль, которых еще в БД нет - зарегистрировать нового юзера
    
-   b) юзер пытается войти без регистрации, с пустыми полями ввода (может быть кнопке `Login` сделать ***disable?***) - напомнить о том, что надо ввести email и пароль
+   b) юзер пытается войти с пустыми полями ввода (может быть кнопке `Login` сделать ***disable?***) - напомнить о том, что надо ввести email и пароль
    
-   c) юзер нажимает кнопку "Login" с частично/неверно заполненными полями ввода - выдать ошибку или зарегистрировать нового юзера
+   c) юзер нажимает кнопку "Login" с частично/неверно заполненными полями ввода - выдать ошибку
    
-   d) юзер вводит email / пароль, которые уже существуют в базе - успешный логин
+   d) юзер вводит корректные email / пароль, которые уже существуют в базе - успешный логин
    
-2. Сопоставьте сценарии с методами Firebase API: надо ли расписывать все сценарии или просто обработать ошибку в методе 
+2. Реализовать CheckerService как Core-компонент - компонент, взаимодействующий с БД. Закрыть его протоколом CheckerServiceProtocol. Протокол будет требовать пару методов - checkCredentials и signUp, которые будут вызываться по нажатии на кнопки Login и Sign Up соответственно. При реализации метода checkCredentials проверять, есть ли в БД пользователь с переданными учетными данными, вызывая метод `Auth.auth().signIn(withEmail:, password:, completion:)`. Если данный метод вернул ошибку, то показывать ее на экране в виде алерта. Регистрировать пользователя с помощью метода `Auth.auth().createUser(withEmail:, password:, completion:)`. 
+Если на экране отрисована лишь одна кнопка Login, то необходимо продумать логику регистрации пользователя. При нажатии на нее сначала проверять, есть ли такой пользователь в БД. Если такого пользователя нет, регистировать в БД. Если такой пользователь есть, но введен неверный пароль, показать соответствующую ошибку. Если пользователь есть, а введенные поля валидны, проходить авторизацию и открывать следующий экран.
 
-3. раньше у нас был синглтон Checker, теперь вариантов 2: 
-- LoginInspector передается в роли ViewModel (или как extension от ViewModel) к LoginViewController. Тогда взаимодействие у него будет с LoginViewController через замыкания.
-- LoginInspector взаимодействует с LoginViewController через протокол делегата LoginViewControllerDelegate. 
-В любом случае, в своем(их) методе(ах) проверки логина и пароля LoginInspector будет вызывать методы Firebase/Auth
+3. При закрытии приложения не забыть пользователя разлогинить с помощью метода `Auth.auth().signOut()` в методе `AppDelegate/SceneDelegate` `applicationWillTerminate/sceneDidDisconnect`.
+4. Вызывать методы `CheckerService` в сервисе/инспекторе `LoginInspector`, который закрыт протоколом `LoginViewControllerDelegate` и который инджектится в `LoginViewController`. То есть `LoginViewController` имеет ссылку на `LoginInspector` в виду приватного свойства `private weak var delegate: LoginViewControllerDelegate?`.
 
 ### Что пригодится: 
 
