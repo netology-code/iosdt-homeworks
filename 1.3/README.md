@@ -37,7 +37,7 @@ https://firebase.google.com/docs/auth/ios/start?authuser=0
 Если на экране отрисована лишь одна кнопка `Login`, то необходимо продумать логику регистрации пользователя. При нажатии на нее сначала проверять, есть ли такой пользователь в БД. Если такого пользователя нет, регистировать в БД. Если такой пользователь есть, но введен неверный пароль, показать соответствующую ошибку. Если пользователь есть, а введенные поля валидны, проходить авторизацию и открывать следующий экран.
 
 3. При закрытии приложения не забыть пользователя разлогинить с помощью метода `Auth.auth().signOut()` в методе `AppDelegate/SceneDelegate` `applicationWillTerminate/sceneDidDisconnect`.
-4. Вызывать методы `CheckerService` в сервисе/инспекторе `LoginInspector`, который закрыт протоколом `LoginViewControllerDelegate` и который инджектится в `LoginViewController`. То есть `LoginViewController` имеет ссылку на `LoginInspector` в виду приватного свойства `private weak var delegate: LoginViewControllerDelegate?`.
+4. Вызывать методы `CheckerService` в сервисе/инспекторе `LoginInspector`, который закрыт протоколом `LoginViewControllerDelegate` и который инджектится в `LoginViewController`. `LoginViewControllerDelegate` требует те же методы, что и `CheckerServiceProtocol`. Получается `LoginViewController` имеет ссылку на `LoginInspector` в виде приватного свойства `private weak var delegate: LoginViewControllerDelegate?`. При нажатии на кнопки/кнопку, в реализации соответствующих функций/соответствующей функции, вызываются методы делегата `checkCredentials` или `signUp`.
 
 ### Что пригодится: 
 
