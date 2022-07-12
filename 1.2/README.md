@@ -14,7 +14,7 @@
 
 - Создайте модель данных на базе JSON
 - Запустите `URLSessionDataTask` 
-- С помощью `JSONSerialization` инициализируйте объект в `do try catch` блоке. Используйте метод `jsonObject(with data: Data)`.
+- С помощью `JSONSerialization` инициализируйте объект в `do try catch` блоке. Используйте метод `jsonObject(with data: Data, options opt: JSONSerialization.ReadingOptions = [])`.
 
 - В дополнительно созданной `UILabel` на `InfoViewController` отобразите значение поля `title`
 
