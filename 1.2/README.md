@@ -14,7 +14,8 @@
 
 - Создайте модель данных на базе JSON
 - Запустите `URLSessionDataTask` 
-- С помощью `JSONSerialization` инициализируйте объект с типом модели
+- С помощью `JSONSerialization` инициализируйте объект в `do try catch` блоке. Используйте метод `jsonObject(with data: Data)`.
+
 - В дополнительно созданной `UILabel` на `InfoViewController` отобразите значение поля `title`
 
 ## Задание 2:
@@ -23,7 +24,7 @@
 
 - Создайте модель данных планеты на базе JSON, соответствующую протоколу `Decodable` 
 - Запустите `URLSessionDataTask` 
-- С помощью `JSONDecoder` инициализируйте объект с типом модели
+- С помощью `JSONDecoder` инициализируйте объект с типом модели. Используйте метод `decode<T: Decodable>(_ type: T.Type, from: Data)`.
 - В дополнительно созданной `UILabel` на `InfoViewController` отобразите период обращения планеты Татуин вокруг своей звезды (orbital_period)
 - Подсказка: в этой задаче пригодится `enum CodingKeys` 
 
