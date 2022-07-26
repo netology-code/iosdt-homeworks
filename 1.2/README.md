@@ -18,7 +18,7 @@
 
 ### Задание 1
 
-[URL 1](https://jsonplaceholder.typicode.com/todos/ {любой номер на ваше усмотрение})
+[URL 1](https://jsonplaceholder.typicode.com/todos/) - /{любой номер на ваше усмотрение}
 
 - Создайте модель данных на базе JSON
 - Запустите `URLSessionDataTask` 
