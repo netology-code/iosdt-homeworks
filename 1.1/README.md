@@ -24,9 +24,9 @@
 4.  Для инициализации кейсов `appConfiguration` используйте любые три `URL` из открытого API: `https://swapi.dev/api/`. 
 
 Примеры String для URL: 
-* "https://swapi.dev/api/people/8"
-* "https://swapi.dev/api/starships/3"
-* "https://swapi.dev/api/planets/5"
+* «https://swapi.dev/api/people/8»;
+* «https://swapi.dev/api/starships/3»;
+* «https://swapi.dev/api/planets/5».
 
 5. Передайте конфигурацию в метод сетевого сервиса. Поскольку метод `request` сервиса `NetworkManager/NetworkService` не принимал параметров, его надо изменить, добавив как параметр конфигурацию `static func request(for configuration: AppConfiguration) {}`.
 6. Реализуйте сессию в методе `request` с помощью переданной конфигурации. Для этого сначала нужно достать ассоциированное значение (типа `String` или сразу `URL`) из параметра конфигурации `configuration` с помощью оператора `switch`, преобразовать строку в `URL` при необходимости, а далее отправить запрос с помощью `URLSessionDataTask` к API.
