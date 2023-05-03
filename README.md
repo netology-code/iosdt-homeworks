@@ -19,6 +19,6 @@
 
 [2.5 CoreData. Оптимизации. Работа в многопоточной среде](/2.5)
 
-[2.6 FetchResultController](/2.6)
+[2.6 NSFetchedResultsController](/2.6)
 
 [2.7 Безопасность](/2.7)
