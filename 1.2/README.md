@@ -47,7 +47,7 @@
 
 ### Задание 3* (с большой звёздочкой)
 
-[URL тот же](https://swapi.dev/api/planets/1).
+[URL тот же](https://swapi.py4e.com/api/planets/1/).
 
 1. Создайте модель данных планеты на базе JSON, соответствующую протоколу `Decodable`. 
 2. Запустите `URLSessionDataTask`. 
