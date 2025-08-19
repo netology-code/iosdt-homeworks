@@ -31,7 +31,7 @@
 
 ### Задание 2
 
-[URL 2](https://swapi.dev/api/planets/1).
+[URL 2](https://swapi.py4e.com/api/planets/1/).
 
 - Создайте модель данных планеты на базе JSON, соответствующую протоколу `Decodable`. 
 - Запустите `URLSessionDataTask`. 
